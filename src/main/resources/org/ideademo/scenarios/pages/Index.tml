@@ -99,7 +99,7 @@
      </colgroup>
      <tr>
       <td>Description</td>
-      <td>${row.description}(<t:pagelink page="climatology/view" context="row.id" target="_blank">More&hellip;</t:pagelink>)</td>
+      <td>${row.description}(<t:pagelink page="scenario/view" context="row.id" target="_blank">More&hellip;</t:pagelink>)</td>
      </tr>
      
      <tr>
