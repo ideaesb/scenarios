@@ -73,7 +73,7 @@ public class Index
   
   /////////////////////////////
   //  Drives QBE Search
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Scenario example;
   
   
@@ -85,7 +85,7 @@ public class Index
 
     
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private String searchText;
 
   @Inject
@@ -95,10 +95,10 @@ public class Index
   private HibernateSessionManager sessionManager;
 
   @Property 
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   int retrieved; 
   @Property 
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   int total;
 
   @Inject
@@ -117,7 +117,7 @@ public class Index
   
   // the regions select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Regions regions;
   
   public enum Regions
@@ -128,7 +128,7 @@ public class Index
   
   // the ECV select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Ecv ecv;
   
   public enum Ecv
@@ -139,7 +139,7 @@ public class Index
   
   // the ECV select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Phenomena phenomena;
   
   public enum Phenomena
@@ -149,7 +149,7 @@ public class Index
   
   // the sector select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Sector sector;
   
   public enum Sector
@@ -159,7 +159,7 @@ public class Index
   
   // the METHOLOGY select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Method methodology;
   
   public enum Method
@@ -170,7 +170,7 @@ public class Index
 /*
   // the TIMESCALE select box
   @Property
-  @Persist (PersistenceConstants.FLASH)
+  @Persist
   private Timescale timescale;
   
   public enum Timescale
@@ -725,12 +725,13 @@ public class Index
   
   public StreamResponse onSelectedFromPdf() 
   {
+	 PDFDocument docWrapper = new PDFDocument(getPDFTables(getList()));
      String subheader = "Printing " + retrieved + " of total " + total + " records.";
      if (StringUtils.isNotBlank(searchText))
      {
     	  subheader += "  Searching for \"" + searchText + "\""; 
      }
-	 PDFDocument docWrapper = new PDFDocument(getPDFTables(getList()));
+	 
 	 java.awt.Image awtImage = Toolkit.getDefaultToolkit().createImage(logoAsset.getResource().toURL());
 	 
 	 
